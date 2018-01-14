@@ -1,5 +1,4 @@
-import { Aurelia } from 'aurelia-framework';
-import { PLATFORM } from 'aurelia-pal';
+import {Aurelia} from 'aurelia-framework';
 import {WebpackLoader} from 'aurelia-loader-webpack';
 import {DirtyCheckProperty} from 'aurelia-binding';
 
@@ -23,7 +22,7 @@ function initialize() {
   };
 }
 
-function start(configure) {
+function start(configure: any) {
   const aurelia = new Aurelia(new WebpackLoader());
     
   aurelia.host = pal.DOM.querySelectorAll('body')[0];
@@ -49,12 +48,12 @@ function stop() {
   require('aurelia-pal-nodejs').reset(pal.DOM.global.window);
 }
 
-export default function (configure) {
+export default function (configure: any) {
   return {
     initialize,
     stop,
     start: function() {
-        return start(configure);
+      return start(configure);
     }
   };
 };
