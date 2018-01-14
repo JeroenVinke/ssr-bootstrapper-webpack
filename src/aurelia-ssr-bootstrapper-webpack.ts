@@ -24,13 +24,13 @@ function initialize() {
 
 function start(configure: any) {
   const aurelia = new Aurelia(new WebpackLoader());
-    
+
   aurelia.host = pal.DOM.querySelectorAll('body')[0];
 
   const attribute = pal.DOM.createAttribute('aurelia-app');
   attribute.value = 'main';
   aurelia.host.attributes.setNamedItem(attribute);
-  
+
   return new Promise(resolve => {
     // we need to wait for aurelia-composed as otherwise
     // the router hasn't been fully initialized and 
@@ -38,7 +38,7 @@ function start(configure: any) {
     pal.DOM.global.window.addEventListener('aurelia-composed', () => {
       resolve({ aurelia, pal, palNodeJS, stop });
     });
-    
+
     return configure(aurelia);
   });
 }
