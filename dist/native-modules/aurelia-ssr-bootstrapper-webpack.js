@@ -27,7 +27,9 @@ function start(configure) {
         // the router hasn't been fully initialized and 
         // generated routes by route-href will be undefined
         pal.DOM.global.window.addEventListener('aurelia-composed', function () {
-            resolve({ aurelia: aurelia, pal: pal, palNodeJS: palNodeJS, stop: stop });
+            setTimeout(function () {
+                resolve({ aurelia: aurelia, pal: pal, palNodeJS: palNodeJS, stop: stop });
+            }, 20);
         });
         return configure(aurelia);
     });
