@@ -5,6 +5,11 @@ import { DirtyCheckProperty } from 'aurelia-binding';
 // otherwise the setTimeout of the dirty checker
 // prevents nodejs from garbage collecting the app
 DirtyCheckProperty.prototype.subscribe = function () { };
+// https://github.com/angular/angular-cli/issues/8412
+// https://github.com/ag-grid/ag-grid-react/issues/24
+global.Element = typeof Element === 'undefined' ? function () { } : Element;
+global.HTMLElement = typeof HTMLElement === 'undefined' ? function () { } : HTMLElement;
+global.HTMLSelectElement = typeof HTMLSelectElement === 'undefined' ? function () { } : HTMLSelectElement;
 var palNodeJS = require('aurelia-pal-nodejs');
 var pal = require('aurelia-pal');
 function initialize() {
